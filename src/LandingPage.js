@@ -18,27 +18,32 @@ function LandingPage() {
 
   return (
     <>
-      <div style={{ padding: "20px", fontFamily: "Arial" }}>
-        <h1>E-commerce Search</h1>
-        <input
-          type="text"
-          placeholder="Search products..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{
-            padding: "10px",
-            width: "300px",
-            marginBottom: "20px",
-            borderRadius: "5px",
-            border: "1px solid #ccc",
-          }}
-        />
+      <div style={{ padding: "30px", fontFamily: "Arial, sans-serif" }}>
+        <h1 style={{ marginBottom: "20px", textAlign: "center" }}>
+          E-commerce Search
+        </h1>
+
+        <div style={{ textAlign: "center", marginBottom: "30px" }}>
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            style={{
+              padding: "12px",
+              width: "350px",
+              borderRadius: "8px",
+              border: "1px solid #ccc",
+              fontSize: "16px",
+            }}
+          />
+        </div>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-            gap: "20px",
+            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+            gap: "25px",
           }}
         >
           {filteredProducts.map((product) => (
@@ -46,19 +51,34 @@ function LandingPage() {
               key={product.id}
               style={{
                 border: "1px solid #ddd",
-                borderRadius: "10px",
-                padding: "10px",
+                borderRadius: "12px",
+                padding: "15px",
                 textAlign: "center",
+                height: "400px",
+                backgroundColor: "#fff",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+                transition: "transform 0.2s ease-in-out",
               }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
             >
               <img
                 src={product.thumbnail}
                 alt={product.title}
-                width="150"
-                style={{ objectFit: "cover", borderRadius: "5px" }}
+                style={{
+                  width: "230px",
+                  height: "200px",
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                  marginBottom: "12px",
+                }}
               />
-              <h3>{product.title}</h3>
-              <p>${product.price}</p>
+              <h3 style={{ fontSize: "1.1rem", marginBottom: "8px" }}>
+                {product.title}
+              </h3>
+              <p style={{ fontSize: "1rem", fontWeight: "bold", color: "#333" }}>
+                ${product.price}
+              </p>
             </div>
           ))}
         </div>
